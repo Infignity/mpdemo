@@ -15,6 +15,6 @@ def icp(q="spice"):
     icp_files = ['spice_icp']
     for f in icp_files:
         if q in f:
-            with open(f'files/{f}.json') as fp:
+            with open(f'icps/{f}.json') as fp:
                 return json.load(fp)
     return []
