@@ -6,14 +6,19 @@ import requests
 app = FastAPI()
 
 spice_pro_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv'
+spice_con_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv'
 
-@app.get("/apollo")
-def random_apollo(q="spice"):
-    "Return 25 random data points from Apollo."
+@app.get("/sheet_data")
+def random_apollo(q="spice", type="prospect"):
+    "Return sheet data as json."
     if q.lower() == 'spice':
-        res = requests.get(spice_pro_sh)
-        return list(csv.DictReader(io.StringIO(res.text)))
-
+        if type == "prospect":
+            res = requests.get(spice_pro_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+        else:
+            res = requests.get(spice_con_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+    
 
 @app.get("/icp")
 def icp(q="spice"):
