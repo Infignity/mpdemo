@@ -1,17 +1,19 @@
 from fastapi import FastAPI
 from apollo import Apollo
-import json
+import json, csv, io
+import requests
 
 app = FastAPI()
 
+spice_pro_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv'
+
 @app.get("/apollo")
-def random_apollo(q="test"):
+def random_apollo(q="spice"):
     "Return 25 random data points from Apollo."
-    prospect_files = ['test']
-    for f in prospect_files:
-        if q in f:
-            with open(f'prospects/{f}.jsonl') as f:
-                return [json.loads(p) for p in f.readlines()]
+    if q.lower() == 'spice':
+        res = requests.get(spice_pro_sh)
+        return list(csv.DictReader(io.StringIO(res.text)))
+
 
 @app.get("/icp")
 def icp(q="spice"):
