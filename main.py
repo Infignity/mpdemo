@@ -4,10 +4,14 @@ import json
 
 app = FastAPI()
 
-@app.get("/random_apollo_search")
-def random_apollo(q="john"):
+@app.get("/apollo")
+def random_apollo(q="test"):
     "Return 25 random data points from Apollo."
-    return
+    prospect_files = ['test']
+    for f in prospect_files:
+        if q in f:
+            with open(f'prospects/{f}.jsonl') as f:
+                return [json.loads(p) for p in f.readlines()]
 
 @app.get("/icp")
 def icp(q="spice"):
