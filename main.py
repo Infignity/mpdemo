@@ -6,7 +6,7 @@ import requests
 app = FastAPI()
 
 spice_pro_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv'
-spice_con_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv'
+spice_con_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv&sheet=content'
 
 @app.get("/sheet_data")
 def random_apollo(q="spice", type="prospect"):
