@@ -23,9 +23,9 @@ def random_apollo(q="spice", type="prospect"):
 @app.get("/icp")
 def icp(q="spice"):
     "Return preset icp if query matches the input."
-    icp_files = ['spice_icp']
+    icp_files = ['spice', 'assist']
     for f in icp_files:
-        if q in f:
+        if f in q.lower():
             with open(f'icps/{f}.json') as fp:
                 return json.load(fp)
     return []
