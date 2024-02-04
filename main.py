@@ -7,8 +7,8 @@ app = FastAPI()
 
 spice_pro_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv&sheet=prospects'
 spice_con_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv&sheet=content'
-spice1_pro_sh = 'https://docs.google.com/spreadsheets/d/13XTt7JRyjiWo6bP0DF4kNNYYXwEwT1ubGs9mX1yvFyc/gviz/tq?tqx=out:csv&sheet=prospects'
-spice1_con_sh = 'https://docs.google.com/spreadsheets/d/13XTt7JRyjiWo6bP0DF4kNNYYXwEwT1ubGs9mX1yvFyc/gviz/tq?tqx=out:csv&sheet=content'
+spice1_pro_sh = 'https://docs.google.com/spreadsheets/d/1BFKGwGdp_DKYf2liUr3uzR46P53pt8hA0x5W6EXqQSc/gviz/tq?tqx=out:csv&sheet=prospects'
+spice1_con_sh = 'https://docs.google.com/spreadsheets/d/1BFKGwGdp_DKYf2liUr3uzR46P53pt8hA0x5W6EXqQSc/gviz/tq?tqx=out:csv&sheet=content'
 alex_pro_sh = 'https://docs.google.com/spreadsheets/d/1qJtjXjLgmIjzQ7uRAsMGmWfVDMMg-_YQtrthApFxEO0/gviz/tq?tqx=out:csv&sheet=prospects'
 alex_con_sh = 'https://docs.google.com/spreadsheets/d/1qJtjXjLgmIjzQ7uRAsMGmWfVDMMg-_YQtrthApFxEO0/gviz/tq?tqx=out:csv&sheet=content'
 alex1_pro_sh = 'https://docs.google.com/spreadsheets/d/1DZSct8JCUAX1qFyLg9Y7HlBZrUlTOsfl-rvI5Gd_HLs/gviz/tq?tqx=out:csv&sheet=prospects'
