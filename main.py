@@ -5,18 +5,46 @@ import requests
 
 app = FastAPI()
 
-spice_pro_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv'
+spice_pro_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv&sheet=prospects'
 spice_con_sh = 'https://docs.google.com/spreadsheets/d/1oycHxgxnStCDT39_7rLP3IwlVpfXxO41vdvbdYe9ees/gviz/tq?tqx=out:csv&sheet=content'
+spice1_pro_sh = 'https://docs.google.com/spreadsheets/d/13XTt7JRyjiWo6bP0DF4kNNYYXwEwT1ubGs9mX1yvFyc/gviz/tq?tqx=out:csv&sheet=prospects'
+spice1_con_sh = 'https://docs.google.com/spreadsheets/d/13XTt7JRyjiWo6bP0DF4kNNYYXwEwT1ubGs9mX1yvFyc/gviz/tq?tqx=out:csv&sheet=content'
+alex_pro_sh = 'https://docs.google.com/spreadsheets/d/1qJtjXjLgmIjzQ7uRAsMGmWfVDMMg-_YQtrthApFxEO0/gviz/tq?tqx=out:csv&sheet=prospects'
+alex_con_sh = 'https://docs.google.com/spreadsheets/d/1qJtjXjLgmIjzQ7uRAsMGmWfVDMMg-_YQtrthApFxEO0/gviz/tq?tqx=out:csv&sheet=content'
+alex1_pro_sh = 'https://docs.google.com/spreadsheets/d/1DZSct8JCUAX1qFyLg9Y7HlBZrUlTOsfl-rvI5Gd_HLs/gviz/tq?tqx=out:csv&sheet=prospects'
+alex1_con_sh = 'https://docs.google.com/spreadsheets/d/1DZSct8JCUAX1qFyLg9Y7HlBZrUlTOsfl-rvI5Gd_HLs/gviz/tq?tqx=out:csv&sheet=content'
 
 @app.get("/sheet_data")
 def random_apollo(q="spice", type="prospect"):
     "Return sheet data as json."
-    if q.lower() == 'spice':
+    if 'spice' in q.lower() and '1' in q.lower():
+        if type == "prospect":
+            res = requests.get(spice1_pro_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+        else:
+            res = requests.get(spice1_con_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+    if 'spice' in q.lower():
         if type == "prospect":
             res = requests.get(spice_pro_sh)
             return list(csv.DictReader(io.StringIO(res.text)))
         else:
             res = requests.get(spice_con_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+        
+    if 'alex' in q.lower() and '1' in q.lower():
+        if type == "prospect":
+            res = requests.get(alex1_pro_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+        else:
+            res = requests.get(alex1_con_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+    if 'alex' in q.lower():
+        if type == "prospect":
+            res = requests.get(alex_pro_sh)
+            return list(csv.DictReader(io.StringIO(res.text)))
+        else:
+            res = requests.get(alex_con_sh)
             return list(csv.DictReader(io.StringIO(res.text)))
     
 
