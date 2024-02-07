@@ -57,3 +57,10 @@ def icp(q="spice"):
             with open(f'icps/{f}.json') as fp:
                 return json.load(fp)
     return []
+
+
+apollo_gateway = Apollo()
+
+@app.post("/apollo_gateway")
+def apollo(url, json_data=None, params=None, method="post"):
+    return apollo_gateway.req(url, json_data=json_data, params=params, method=method)

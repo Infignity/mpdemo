@@ -34,3 +34,8 @@ class Apollo:
         resp = self.s.post('https://app.apollo.io/api/v1/mixed_people/search', json=payload)
         print(resp.status_code)
         return resp.json()
+    
+    def req(self, url, json_data=None, params=None, method="post"):
+        "Make a request using Apollo session."
+        res = self.s.request(url=url, method=method, data=json_data, params=params)
+        return res.json()
