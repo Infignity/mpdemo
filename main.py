@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from apollo import Apollo
 import json, csv, io
 import requests
+from pydantic import BaseModel
+from typing import Union
 
 app = FastAPI()
 
@@ -60,7 +62,15 @@ def icp(q="spice"):
 
 
 apollo_gateway = Apollo()
+class RequestInput(BaseModel):
+    url: str
+    method: str = 'post'
+    params: Union[str, None] = None
+    body: Union[dict, None] = None
 
 @app.post("/apollo_gateway")
-def apollo(url, json_data=None, params=None, method="post"):
-    return apollo_gateway.req(url, json_data=json_data, params=params, method=method)
+def apollo(req: RequestInput):
+    return apollo_gateway.req(req.url,
+                              json_data=req.body,
+                              params=req.params,
+                              method=req.method)
