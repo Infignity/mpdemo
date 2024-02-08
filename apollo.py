@@ -40,6 +40,6 @@ class Apollo:
         res = self.s.request(url=url, method=method, data=json_data, params=params)
         output = {
             'status_code': res.status_code,
-            'text'       : res.text()
+            'text'       : res.text
         }
         return output
