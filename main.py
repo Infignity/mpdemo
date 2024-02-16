@@ -65,7 +65,7 @@ apollo_gateway = Apollo()
 class RequestInput(BaseModel):
     url: str
     method: str = 'post'
-    params: Union[str, None] = None
+    params: Union[dict, None] = None
     body: Union[dict, None] = None
 
 @app.post("/apollo_gateway")
