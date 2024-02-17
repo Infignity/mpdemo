@@ -37,9 +37,11 @@ class Apollo:
     
     def req(self, url, json_data=None, params=None, method="post"):
         "Make a request using Apollo session."
-        res = self.s.request(url=url, method=method, data=json_data, params=params)
+        res = self.s.request(url=url, method=method, json=json_data, params=params)
         output = {
             'status_code': res.status_code,
             'text'       : res.text
         }
+        print(output)
         return output
+    
